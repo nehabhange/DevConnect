@@ -4,6 +4,15 @@ import { useState } from 'react'
 const Login = () => {
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const newUSer={
+        email,
+        password
+      }
+      
+  }
+  
   return (
     <div className="login">
     <div className="container">
@@ -11,7 +20,7 @@ const Login = () => {
         <div className="col-md-8 m-auto">
           <h1 className="display-4 text-center">Log In</h1>
           <p className="lead text-center">Sign in to your ConnectDEV account</p>
-          <form action="dashboard.html">
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value={email} onChange={e => setEmail(e.target.value)} />
             </div>
