@@ -20,8 +20,14 @@ const Register = (props) => {
     // }
    
     useEffect(()=>{
-      setErrors(props.errors)
-    },[props.errors])
+      if(props.auth.isAuthenticated){
+           window.location.href = "/dashboard"
+      }
+      if (props.errors){
+        setErrors(props.errors)
+      }
+      
+    },[props.errors,props.auth.isAuthenticated])
 
 
     const handleSubmit = (e) => {
