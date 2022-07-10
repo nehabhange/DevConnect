@@ -10,6 +10,8 @@ import Login from "./components/auth/Login";
 import setAuthToken from "./utils/setAuthToken";
 import jwt_decode from "jwt-decode"
 import { logoutUser, setCurrentUser } from "./actions/authActions";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./actions/profileActions";
 
 
 //check for token
@@ -26,6 +28,7 @@ if(decoded.exp<currentTime){
   //logout user
   store.dispatch(logoutUser());
   //clear current profile and redirect to login
+  store.dispatch(clearCurrentProfile())
   window.location.href="/login"
 }
 }
@@ -41,6 +44,7 @@ function App() {
           <Route exact path="/" element={<Landing/>} />          
           <Route exact path="/register" element={<Register/>} />
           <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/dashboard" element={<Dashboard/>}/>
           
           </Routes> 
           <Footer />
